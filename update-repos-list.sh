@@ -7,13 +7,16 @@ repos=(
   "/var/www/html/wp-content/plugins/keep-aspect-ratio"
 )
 
+i=0
+t=${#repos[@]}
 echo ""
-echo "Getting latest for" ${#repos[@]} "repositories using pull"
+echo "Getting latest for" $t "repositories using pull"
 
 for repo in "${repos[@]}"
 do
-  echo ""
-  echo "****** Getting latest for" ${repo} "******"
-  git -C "${repo}" pull
-  echo "******************************************"
+	((i++))
+	echo ""
+	echo "****** ["$i"/"$t"] Getting latest for" ${repo} "******"
+	git -C "${repo}" pull
+	echo "******************************************"
 done
